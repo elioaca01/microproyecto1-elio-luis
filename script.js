@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const playerNameInput = document.getElementById('playerName');
     const victoriesDisplay = document.getElementById('victories');
     const colorButtons = document.querySelectorAll('.color-button');
+    const instructionsButton = document.getElementById('instructions'); // Botón de instrucciones
+    const modal = document.getElementById('instructionsModal'); // Modal de instrucciones
+    const closeButton = document.querySelector('.close'); // Botón de cierre del modal
 
     let sequence = [];
     let playerSequence = [];
@@ -14,9 +17,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     victoriesDisplay.textContent = victories;
 
+    // Evento para iniciar el juego
     startButton.addEventListener('click', startGame);
+
+    // Evento para reiniciar el juego
     resetButton.addEventListener('click', resetGame);
 
+    // Evento para mostrar las instrucciones
+    instructionsButton.addEventListener('click', () => {
+        modal.style.display = 'flex'; // Mostrar el modal
+    });
+
+    // Evento para cerrar el modal al hacer clic en la "X"
+    closeButton.addEventListener('click', () => {
+        modal.style.display = 'none'; // Ocultar el modal
+    });
+
+    // Evento para cerrar el modal al hacer clic fuera del contenido
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none'; // Ocultar el modal
+        }
+    });
+
+    // Eventos para los botones de colores
     colorButtons.forEach(button => {
         button.addEventListener('click', () => {
             const color = button.id;
@@ -26,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Función para iniciar el juego
     function startGame() {
         const playerName = playerNameInput.value.trim();
         if (playerName === '') {
@@ -41,11 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
         nextRound();
     }
 
+    // Función para reiniciar el juego
     function resetGame() {
         game.style.display = 'none';
         menu.style.display = 'block';
     }
 
+    // Función para avanzar a la siguiente ronda
     function nextRound() {
         round++;
         playerSequence = [];
@@ -54,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playSequence();
     }
 
+    // Función para reproducir la secuencia de colores
     function playSequence() {
         let i = 0;
         const interval = setInterval(() => {
@@ -67,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
+    // Función para resaltar un botón de color
     function highlightButton(color) {
         const button = document.getElementById(color);
         button.style.opacity = '1';
@@ -75,11 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
 
+    // Función para reproducir un sonido
     function playSound(color) {
         const audio = new Audio(`sounds/${color}.mp3`);
         audio.play();
     }
 
+    // Función para verificar la secuencia del jugador
     function checkSequence() {
         const index = playerSequence.length - 1;
         if (playerSequence[index] !== sequence[index]) {
@@ -96,11 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Función para manejar el fin del juego
     function gameOver() {
         alert('Juego Terminado');
         resetGame();
     }
 
+    // Función para manejar la victoria
     function victory() {
         victories++;
         localStorage.setItem('victories', victories);
@@ -109,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resetGame();
     }
 
+    // Función para obtener un color aleatorio
     function getRandomColor() {
         const colors = ['red', 'green', 'blue', 'yellow'];
         return colors[Math.floor(Math.random() * colors.length)];

@@ -9,12 +9,22 @@
 <body>
     <div id="menu">
         <h1>Simon Says</h1>
-        <input type="text" id="playerName" placeholder="Ingresa tu nombre">
+        <div class="container">
+            <input type="text" id="playerName" class="input" required>
+            <label class="label">Ingresa tu nombre</label>
+        </div>
         <button id="startButton">Iniciar Juego</button>
-        <button id="instructions">instrucciones</button>
+        <button id="instructions">Instrucciones</button>
         <h2>Victorias: <span id="victories">0</span></h2>
+    
+        <!-- Modal de Instrucciones -->
+        <div id="instructionsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Simon Says es un juego de memoria en el que el jugador debe seguir y repetir una secuencia de colores y sonidos en el mismo orden en que fueron presentados. A medida que el jugador progresa, las secuencias se vuelven más largas y desafiantes. El objetivo es recordar la secuencia más larga posible sin cometer errores.</p>
+            </div>
+        </div>
     </div>
-
     <div id="game" style="display: none;">
         <div class="buttons">
             <button id="red" class="color-button"></button>
@@ -24,7 +34,7 @@
         </div>
         <button id="resetButton">Volver al Menú</button>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
