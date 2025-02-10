@@ -1,0 +1,42 @@
+
+
+.header{
+    border: 2px solid black;
+    
+    text-align: center;
+}
+
+.box1{
+    border: 1px solid black;
+    width: 50%;
+   margin: auto;
+   margin-top: 50px;
+
+}
+
+.box1 h4{
+    margin-left: 10px;
+}
+
+.box1 span{
+    margin-right: 10px;
+}
+
+.box1-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img{
+    width: 100%;
+}
+
+p{
+    padding: 10px;
+}
+
+
+
+
+
