@@ -1,42 +1,250 @@
-
-
-.header{
-    border: 2px solid black;
-    
-    text-align: center;
-}
-
-.box1{
-    border: 1px solid black;
-    width: 50%;
-   margin: auto;
-   margin-top: 50px;
-
-}
-
-.box1 h4{
-    margin-left: 10px;
-}
-
-.box1 span{
-    margin-right: 10px;
-}
-
-.box1-header{
+body {
+    font-family: Arial, sans-serif; /* Fuente principal */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-img{
-    width: 100%;
-}
-
-p{
-    padding: 10px;
-}
-
-
-
-
-
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100vh; /* Altura completa de la pantalla */
+    margin: 0; /* Eliminar márgenes por defecto */
+    /* Nuevo fondo */
+    --s: 37px; /* control the size */
+    --c: #0000, #282828 0.5deg 119.5deg, #0000 120deg;
+    --g1: conic-gradient(from 60deg at 56.25% calc(425% / 6), var(--c));
+    --g2: conic-gradient(from 180deg at 43.75% calc(425% / 6), var(--c));
+    --g3: conic-gradient(from -60deg at 50% calc(175% / 12), var(--c));
+    background: var(--g1), var(--g1) var(--s) calc(1.73 * var(--s)), var(--g2),
+                var(--g2) var(--s) calc(1.73 * var(--s)), var(--g3) var(--s) 0,
+                var(--g3) 0 calc(1.73 * var(--s)) #1e1e1e;
+    background-size: calc(2 * var(--s)) calc(3.46 * var(--s));
+  
+  /* Estilos para el contenedor del input */
+  .container {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    gap: 7px;
+    position: relative;
+    color: rgb(0, 0, 0);
+    margin-top: 10px; /* Espacio adicional */
+  }
+  
+  /* Estilos para la etiqueta flotante */
+  .container .label {
+    font-size: 15px;
+    padding-left: 10px;
+    position: absolute;
+    top: 13px;
+    transition: 0.3s;
+    pointer-events: none;
+  }
+  
+  .name{
+    padding-bottom: 10px;
+  }
+  
+  /* Estilos para el input */
+  .input {
+    width: 200px;
+    height: 45px;
+    border: none;
+    outline: none;
+    padding: 0px 7px;
+    border-radius: 6px;
+    color: #070404;
+    font-size: 15px;
+    background-color: transparent;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+                -1px -1px 6px rgba(255, 255, 255, 0.4);
+  }
+  
+  /* Estilos cuando el input está enfocado */
+  .input:focus {
+    border: 2px solid transparent;
+    color: #000000;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+                -1px -1px 6px rgba(255, 255, 255, 0.4),
+                inset 3px 3px 10px rgba(0, 0, 0, 1),
+                inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+  }
+  
+  /* Efecto de la etiqueta flotante */
+  .container .input:valid ~ .label,
+  .container .input:focus ~ .label {
+    transition: 0.3s;
+    padding-left: 2px;
+    transform: translateY(-35px);
+  }
+  
+  /* Estilos adicionales para el input válido o enfocado */
+  .container .input:valid,
+  .container .input:focus {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+                -1px -1px 6px rgba(255, 255, 255, 0.4),
+                inset 3px 3px 10px rgba(0, 0, 0, 1),
+                inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+  }
+  /* Estilos para el menú principal */
+  #menu {
+    text-align: center; /* Centrar el contenido del menú */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente para mejorar la legibilidad */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sutil sombra para resaltar el menú */
+  }
+  
+  /* Estilos para los botones del menú */
+  #menu button {
+    padding: 17px 40px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(255, 56, 86);
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+    color: hsl(0, 0%, 100%);
+    cursor: pointer;
+    margin-top: 10px; /* Espacio entre botones */
+  }
+  
+  #menu button:hover {
+    box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+  }
+  
+  #menu button:active {
+    background-color: rgb(255, 56, 86);
+    box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+  }
+  
+  /* Estilos para el área del juego */
+  #game {
+    display: none; /* Ocultar el juego inicialmente */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente para mejorar la legibilidad */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sutil sombra para resaltar el área del juego */
+  }
+  
+  /* Estilos para los botones de colores del Simon Dice */
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 100px); /* Dos columnas de 100px */
+    grid-gap: 10px; /* Espacio entre botones */
+    margin: 20px auto;
+  }
+  
+  .color-button {
+    width: 100px;
+    height: 100px;
+    border: 0;
+    border-radius: 10px; /* Bordes rectangulares */
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  
+  .color-button:hover {
+    opacity: 6;
+  }
+  
+  /* Colores específicos para cada botón */
+  #red {
+    background-color: red;
+    box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+  }
+  
+  #green {
+    background-color: green;
+    box-shadow: rgb(46, 201, 80) 0px 10px 0px 0px;
+  }
+  
+  #blue {
+    background-color: blue;
+    box-shadow: rgb(46, 80, 201) 0px 10px 0px 0px;
+  }
+  
+  #yellow {
+    background-color: rgb(255, 230, 0);
+    box-shadow: rgba(207, 207, 80, 0.63) 0px 10px 0px 0px;
+  }
+  
+  /* Estilos para el botón de reinicio */
+  #resetButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Estilos responsive para pantallas pequeñas (móviles) */
+  @media (max-width: 600px) {
+    .buttons {
+        grid-template-columns: repeat(2, 80px); /* Botones más pequeños en móviles */
+    }
+  
+    .color-button {
+        width: 80px;
+        height: 80px;
+    }
+  }
+    /* Estilos para el modal */
+    .modal {
+      display: none; /* Ocultar el modal por defecto */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+  
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  
+    .close:hover {
+      color: rgb(0, 0, 0);
+    }
+    /* Para Tablets (min-width: 601px y max-width: 1024px)*/
+  
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .buttons {
+        grid-template-columns: repeat(2, 120px); /* Botones más grandes en tablets */
+    }
+  
+    .color-button {
+        width: 120px;
+        height: 120px;
+    }
+  
+    #menu button {
+        padding: 15px 30px; /* Padding mediano para tablets */
+        font-size: 14px; /* Tamaño de fuente mediano para tablets */
+    }
+  
+    #resetButton {
+        padding: 10px 20px; /* Padding mediano para tablets */
+        font-size: 16px; /* Tamaño de fuente mediano para tablets */
+    }
+    }
+  
+    }

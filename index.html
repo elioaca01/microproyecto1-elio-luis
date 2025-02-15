@@ -1,46 +1,40 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Says</title>
     <link rel="stylesheet" href="styles.css">
-    <title>IG</title>
 </head>
 <body>
-    <div class="header"><h1>Code Photo Feed</h1></div>
-   <div class="wrapper">
-        <div class="box1">
-            <div class="box1-header">
-                <h4>My First Photo</h4>
-                <span>12/14</span>
-            </div>
-            <div class="box1-img"><img src="https://k9uchicago.com/wp-content/uploads/2021/09/Why-Pugs-Make-Great_Pets.jpg" alt="pug"></div>
-            <div class="box1-footer">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid delectus impedit voluptatibus reprehenderit! Nihil nam, voluptas ipsum vero earum illo?</p>
-            </div>
+    <div id="menu">
+        <h1 class="name">Simon Says</h1>
+        <div class="container">
+            <input type="text" id="playerName" class="input" required>
+            <label class="label">Ingresa tu nombre</label>
         </div>
+        <button id="startButton">Iniciar Juego</button>
+        <button id="instructions">Instrucciones</button>
+        <h2 id="results"></h2>
     
-        <div class="box1">
-            <div class="box1-header">
-                <h4>Favorite breed</h4>
-                <span>12/14</span>
-            </div>
-            <div class="box1-img"><img src="https://puredogtalk.com/wp-content/uploads/2020/03/86831342_198414638029651_4531671911574274048_n.jpg" alt="pug"></div>
-            <div class="box1-footer">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid delectus impedit voluptatibus reprehenderit! Nihil nam, voluptas ipsum vero earum illo?</p>
+        <!-- Modal de Instrucciones -->
+        <div id="instructionsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Simon Says es un juego de memoria en el que el jugador debe seguir y repetir una secuencia de colores y sonidos en el mismo orden en que fueron presentados. A medida que el jugador progresa, las secuencias se vuelven más largas y desafiantes. El objetivo es recordar la secuencia más larga posible sin cometer errores.</p>
             </div>
         </div>
-
-        <div class="box1">
-            <div class="box1-header">
-                <h4>More pugs</h4>
-                <span>12/14</span>
-            </div>
-            <div class="box1-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBzHFsh4iVjSpuC54SPfXCs3DPRjQ7K8dPrA&s" alt="pug"></div>
-            <div class="box1-footer">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid delectus impedit voluptatibus reprehenderit! Nihil nam, voluptas ipsum vero earum illo?</p>
-            </div>
+    </div>
+    <div id="game" style="display: none;">
+        <div class="buttons">
+            <button id="red" class="color-button"></button>
+            <button id="green" class="color-button"></button>
+            <button id="blue" class="color-button"></button>
+            <button id="yellow" class="color-button"></button>
         </div>
-
-    </div> 
+        <button id="resetButton">Volver al Menú</button>
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>
